@@ -18,7 +18,7 @@
     <div class="search-box-container"> 
         <p>Enter City:</p>
         <input class="city-entry" alt="Enter city here"></input> 
-        <button class="search" type="button">Search!</button>
+        <button class="search" type="button" id="button">Search!</button>
     </div>
 
     <div class="info-container"> 
@@ -26,12 +26,20 @@
     </div>
 
     <div class="map-container">
-        <div class="google-map">Map will go here.</div>
+        <div class="google-map">
+            
+            <iframe
+            width="600"
+            height="600"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXxiv0Jf6dQ_Q2eKZeBvRuih5ywFMXEpA
+              &q=Minneapolis+MN">
+          </iframe>
+            
+        </div>
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
