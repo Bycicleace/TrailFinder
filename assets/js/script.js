@@ -1,6 +1,7 @@
 console.log("hello");
 
 document.getElementById("button").addEventListener("click", function(){
-    console.log("SOMETHING DIFFERENT");
+    var city = document.getElementById("city-entry").value; 
+    console.log(city);
 }); 
 
