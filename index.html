@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="assets/css/stylesheet.css"></link> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/stylesheet.css"></link>
+    <link rel="stylesheet" href="assets/css/foundation.css">
     <title>TrailFinder</title>
 </head>
 <body>
@@ -16,8 +16,15 @@
     </header>
 
     <div class="search-box-container"> 
-        <p>Enter City:</p>
-        <input class="city-entry" id="city-entry"></input>
+        <p>Select a State:</p>
+        <select class="state-entry" id="state-entry">
+            <option value="AL">AL-Alabama</option>
+            AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
+            'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
+            'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
+            'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
+            'VT','VI','VA','WA','WV','WI','WY'
+        </select>
         <button class="search" type="button" id="button">Search!</button>
     </div>
 
@@ -26,22 +33,24 @@
     </div>
 
     <div class="map-container">
-        <div class="google-map">
+        <div class="google-map" id="map">
             
-            <iframe id="google-embed"
+            <!-- <iframe id="google-embed"
             width="600"
             height="600"
             style="border:0"
             loading="lazy"
             allowfullscreen
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXxiv0Jf6dQ_Q2eKZeBvRuih5ywFMXEpA
-              &q=Minneapolis+MN">
-          </iframe>
+              &q=Minneapolis+MN+hiking+trails+near">
+          </iframe> -->
             
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/foundation.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXxiv0Jf6dQ_Q2eKZeBvRuih5ywFMXEpA&libraries=geometry,places&callback=initMap"></script>
     <script src="assets/js/script.js"></script>
     </main>
 
