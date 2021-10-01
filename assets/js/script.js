@@ -6,6 +6,8 @@ document.getElementById("button").addEventListener("click", function(){
     firstAPICall(state);
 });
 
+
+$(document).foundation()
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
 // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
