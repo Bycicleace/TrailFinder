@@ -1,4 +1,4 @@
-
+$(document).foundation();
 //Get input from search box
 document.getElementById("button").addEventListener("click", function(){
     var state = document.getElementById("state-entry").value; 
