@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="assets/css/stylesheet.css"></link> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/stylesheet.css"></link>
+    <link rel="stylesheet" href="assets/css/foundation.css">
     <title>TrailFinder</title>
 </head>
 <body>
@@ -17,7 +17,66 @@
 
     <div class="search-box-container"> 
         <p>Select a State:</p>
-        <select class="state-entry" id="state-entry">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li>
+                <li>
+                    <a>Select A State</a>
+                    <ul class="menu">
+                        <li>AL</li>
+                        <li>AK</li>
+                        <li>AS</li>
+                        <li>AZ</li>
+                        <li>AR</li>
+                        <li>CA</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+            </li>
+        </ul>
             <option value="AL">AL-Alabama</option>
             AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
             'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
@@ -48,8 +107,14 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXxiv0Jf6dQ_Q2eKZeBvRuih5ywFMXEpA&libraries=geometry,places&callback=initMap"></script>
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/foundation.js"></script>
+   
     <script src="assets/js/script.js"></script>
+    
+    
     </main>
 
     <footer>
@@ -57,3 +122,23 @@
     </footer> 
 </body>
 </html>
+
+<option value='AL'>Alabama</option>
+<option value='AK'>Alaska</option>
+<option value='AZ'>Arizona</option>
+<option value='AR'>Arkansa</option>
+<option value='CA'>California</option>
+<option value='CO'>Colorado</option>
+<option value='CT'>Connecticut</option>
+<option value='DE'>Delaware</option>
+<option value='FL'>Florida</option>
+<option value='GA'>Georgia</option>
+<option value='HI'>Hawaii</option>
+<option value='ID'>Idaho</option>
+<option value='IL'>Illinois</option>
+<option value='IN'>Indiana</option>
+<option value='IA'>Iowa</option>
+<option value='KS'>Kansas</option>
+<option value='KY'>Kentucky</option>
+<option value='LA'>Louisiana</option>
+<option value='ME'>Maine</option>
