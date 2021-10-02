@@ -1,12 +1,3 @@
-$(document).foundation();
-//Get input from search box
-document.getElementById("button").addEventListener("click", function(){
-    var state = document.getElementById("state-entry").value; 
-    console.log(state);
-    firstAPICall(state);
-});
-
-
 $(document).foundation()
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
@@ -90,3 +81,41 @@ function getParksByState(state) {
   return parksArray;
 }
 
+var stateSelectionEl = document.querySelector(".search-box-container")
+var resultsEl = document.querySelector(".info-container")
+
+var displayParks = function() {
+  resultsEl.innerHTML = ""
+  parksArray.forEach(function(park) {
+    var parkCard = document.createElement("div");
+    var parkCardHeader = document.createElement("div");
+    var parkCardContent = document.createElement("div")
+    parkCard.className = "card";
+    parkCardHeader.className = "card-divider";
+    parkCardContent.className = "card-section";
+    parkCardHeader.textContent = park.fullName;
+    parkCardContent.textContent = park.description + " Phone Number: " + park.phoneNumbers + " Email Address: " + park.emailAddresses;
+    parkCard.appendChild(parkCardHeader);
+    parkCard.appendChild(parkCardContent);
+    resultsEl.appendChild(parkCard);
+  });
+};
+
+stateSelectionEl.addEventListener("click", function(event){
+  targetEl = event.target;
+  if (targetEl.matches(".state")){
+    getParksByState(targetEl.textContent);
+    i=0
+    var apiCallLoad = setInterval (function(){
+      if (i>20){
+        alert("The request timed out")
+        clearInterval(apiCallLoad);
+      }else if (parksArray.length === 0) {
+        i = i+1
+      }else{
+        displayParks();
+        clearInterval(apiCallLoad);
+      }
+    },500);
+  };
+});
