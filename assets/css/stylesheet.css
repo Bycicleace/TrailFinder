@@ -1,8 +1,15 @@
+/* possible color schemes
+ cheerful and energetic
+    yellow: #fbe8a6
+    reddish: #f4976c
+    dark blue: #303c6c
+    lighter blue: #b4dfe5
+    lightest blue: #d2fdff
+*/
+
+
+
 .body {
     color: black;
 }
 
-ul .menu {
-    max-height: 500px !important;
-    overflow: scroll;
-}

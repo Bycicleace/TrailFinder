@@ -4,90 +4,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/stylesheet.css"></link>
     <link rel="stylesheet" href="assets/css/foundation.css">
+    <link rel="stylesheet" href="assets/css/app.css"></link>
     <title>TrailFinder</title>
 </head>
 <body>
     <main> 
-    <header class="header">
-        <h1>TrailFinder</h1>
-        <h2>Find hiking trails near you!</h2> 
-    </header>
+    <div class="title-bar">
+        <div class="title-bar-title">
+            <h1>TrailFinder</h1>
+        </div>
+        <div class="title-bar-right">
+            <h1>Find hiking trails near you!</h1>
+        </div>
+    </div>
 
-    <div class="search-box-container"> 
-        <p>Select a State:</p>
+    <div class="search-box-container columns large-6"> 
         <ul class="dropdown menu" data-dropdown-menu>
             <li>
                 <li>
-                    <a>Select A State</a>
+                    <a class="arrow">Select A State</a>
                     <ul class="menu">
-                        <li class = "state">AL</li>
-                        <li class = "state">AK</li>
-                        <li class = "state">AS</li>
-                        <li class = "state">AZ</li>
-                        <li class = "state">AR</li>
-                        <li class = "state">CA</li>
-                        <li class = "state">CO</li>
-                        <li class = "state">CT</li>
-                        <li class = "state">DE</li>
-                        <li class = "state">DC</li>
-                        <li class = "state">FM</li>
-                        <li class = "state">FL</li>
-                        <li class = "state">GA</li>
-                        <li class = "state">GU</li>
-                        <li class = "state">HI</li>
-                        <li class = "state">ID</li>
-                        <li class = "state">IL</li>
-                        <li class = "state">IN</li>
-                        <li class = "state">IA</li>
-                        <li class = "state">KS</li>
-                        <li class = "state">KY</li>
-                        <li class = "state">LA</li>
-                        <li class = "state">ME</li>
-                        <li class = "state">MH</li>
-                        <li class = "state">MD</li>
-                        <li class = "state">MA</li>
-                        <li class = "state">MI</li>
-                        <li class = "state">MN</li>
-                        <li class = "state">MS</li>
-                        <li class = "state">MO</li>
-                        <li class = "state">MT</li>
-                        <li class = "state">NE</li>
-                        <li class = "state">NV</li>
-                        <li class = "state">NH</li>
-                        <li class = "state">NJ</li>
-                        <li class = "state">NM</li>
-                        <li class = "state">NY</li>
-                        <li class = "state">NC</li>
-                        <li class = "state">ND</li>
-                        <li class = "state">MP</li>
-                        <li class = "state">OH</li>
-                        <li class = "state">OK</li>
-                        <li class = "state">OR</li>
-                        <li class = "state">PW</li>
-                        <li class = "state">PA</li>
-                        <li class = "state">PR</li>
-                        <li class = "state">RI</li>
-                        <li class = "state">SC</li>
-                        <li class = "state">SD</li>
-                        <li class = "state">TN</li>
-                        <li class = "state">TX</li>
-                        <li class = "state">UT</li>
-                        <li class = "state">VT</li>
-                        <li class = "state">VI</li>
-                        <li class = "state">VA</li>
-                        <li class = "state">WA</li>
-                        <li class = "state">WV</li>
-                        <li class = "state">WI</li>
-                        <li class = "state">WY</li>
+                        <li class = "state"><a href="#" class="state">AL</a></li>
+                        <li class = "state"><a href="#" class="state">AK</a></li>
+                        <li class = "state"><a href="#" class="state">AS</a></li>
+                        <li class = "state"><a href="#" class="state">AZ</a></li>
+                        <li class = "state"><a href="#" class="state">AR</a></li>
+                        <li class = "state"><a href="#" class="state">CA</a></li> 
+                        <li class = "state"><a href="#" class="state">CO</a></li>
+                        <li class = "state"><a href="#" class="state">CT</a></li>
+                        <li class = "state"><a href="#" class="state">DE</a></li>
+                        <li class = "state"><a href="#" class="state">DC</a></li>
+                        <li class = "state"><a href="#" class="state">FM</a></li>
+                        <li class = "state"><a href="#" class="state">FL</a></li>
+                        <li class = "state"><a href="#" class="state">GA</a></li>
+                        <li class = "state"><a href="#" class="state">GU</a></li>
+                        <li class = "state"><a href="#" class="state">HI</a></li>
+                        <li class = "state"><a href="#" class="state">ID</a></li>
+                        <li class = "state"><a href="#" class="state">IL</a></li>
+                        <li class = "state"><a href="#" class="state">IN</a></li>
+                        <li class = "state"><a href="#" class="state">IA</a></li>
+                        <li class = "state"><a href="#" class="state">KS</a></li>
+                        <li class = "state"><a href="#" class="state">KY</a></li>
+                        <li class = "state"><a href="#" class="state">LA</a></li>
+                        <li class = "state"><a href="#" class="state">ME</a></li>
+                        <li class = "state"><a href="#" class="state">MH</a></li>
+                        <li class = "state"><a href="#" class="state">MD</a></li>
+                        <li class = "state"><a href="#" class="state">MA</a></li>
+                        <li class = "state"><a href="#" class="state">MI</a></li>
+                        <li class = "state"><a href="#" class="state">MN</a></li>
+                        <li class = "state"><a href="#" class="state">MS</a></li>
+                        <li class = "state"><a href="#" class="state">MO</a></li>
+                        <li class = "state"><a href="#" class="state">MT</a></li>
+                        <li class = "state"><a href="#" class="state">NE</a></li>
+                        <li class = "state"><a href="#" class="state">NV</a></li>
+                        <li class = "state"><a href="#" class="state">NH</a></li>
+                        <li class = "state"><a href="#" class="state">NJ</a></li>
+                        <li class = "state"><a href="#" class="state">NM</a></li>
+                        <li class = "state"><a href="#" class="state">NY</a></li>
+                        <li class = "state"><a href="#" class="state">NC</a></li>
+                        <li class = "state"><a href="#" class="state">ND</a></li>
+                        <li class = "state"><a href="#" class="state">MP</a></li>
+                        <li class = "state"><a href="#" class="state">OH</a></li>
+                        <li class = "state"><a href="#" class="state">OK</a></li>
+                        <li class = "state"><a href="#" class="state">OR</a></li>
+                        <li class = "state"><a href="#" class="state">PW</a></li>
+                        <li class = "state"><a href="#" class="state">PA</a></li>
+                        <li class = "state"><a href="#" class="state">PR</a></li>
+                        <li class = "state"><a href="#" class="state">RI</a></li>
+                        <li class = "state"><a href="#" class="state">SC</a></li>
+                        <li class = "state"><a href="#" class="state">SD</a></li>
+                        <li class = "state"><a href="#" class="state">TN</a></li>
+                        <li class = "state"><a href="#" class="state">TX</a></li>
+                        <li class = "state"><a href="#" class="state">UT</a></li>
+                        <li class = "state"><a href="#" class="state">VT</a></li>
+                        <li class = "state"><a href="#" class="state">VI</a></li>
+                        <li class = "state"><a href="#" class="state">VA</a></li>
+                        <li class = "state"><a href="#" class="state">WA</a></li>
+                        <li class = "state"><a href="#" class="state">WV</a></li>
+                        <li class = "state"><a href="#" class="state">WI</a></li>
+                        <li class = "state"><a href="#" class="state">WY</a></li>
                     </ul>
                 </li>
             </li>
         </ul>
     </div>
-    <div class="grid-container">
-        <div class="info-container"></div>
+<div class="grid-x grid-padding-x">
+    <div class="cell large-6">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="info-container"></div>
+            </div>
+
+        </div>
     </div>
     <div class="map-container">
         <div class="google-map" id="map">
@@ -104,12 +113,12 @@
             
         </div>
     </div>
+</div>
 
-    
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXxiv0Jf6dQ_Q2eKZeBvRuih5ywFMXEpA&libraries=geometry,places&callback=initMap"></script>
     <script src="assets/js/vendor.js"></script>
     <script src="assets/js/foundation.js"></script>
-   
+    
     <script src="assets/js/script.js"></script>
     
     
