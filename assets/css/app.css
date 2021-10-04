@@ -1,0 +1,46 @@
+/* possible color schemes
+ cheerful and energetic
+    yellow: #fbe8a6
+    reddish: #f4976c
+    dark blue: #303c6c
+    lighter blue: #b4dfe5
+    lightest blue: #d2fdff
+*/
+
+
+
+
+.button {
+    width: 100%;
+}
+
+ul .menu {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+
+li a {
+    color: #f4976c;
+
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+    border-color: #f4976c transparent transparent;
+}
+
+.dropdown.menu > li.is-active > a {
+    color:#303c6c;
+}
+
+h1 {
+    color: #f4976c;
+}
+
+.card {
+    
+}
+
+.title-bar {
+    background-color: #303c6c;
+}

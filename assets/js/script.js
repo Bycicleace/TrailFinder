@@ -1,4 +1,6 @@
 $(document).foundation()
+
+
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
 // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
@@ -87,9 +89,11 @@ var resultsEl = document.querySelector(".info-container")
 var displayParks = function() {
   resultsEl.innerHTML = ""
   parksArray.forEach(function(park) {
+    var parkCardCell = document.createElement("div");
     var parkCard = document.createElement("div");
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div")
+    parkCardCell.className = "cell"
     parkCard.className = "card";
     parkCardHeader.className = "card-divider";
     parkCardContent.className = "card-section";
@@ -97,9 +101,12 @@ var displayParks = function() {
     parkCardContent.textContent = park.description + " Phone Number: " + park.phoneNumbers + " Email Address: " + park.emailAddresses;
     parkCard.appendChild(parkCardHeader);
     parkCard.appendChild(parkCardContent);
-    resultsEl.appendChild(parkCard);
+    parkCardCell.appendChild(parkCard);
+    resultsEl.appendChild(parkCardCell);
   });
 };
+
+
 
 stateSelectionEl.addEventListener("click", function(event){
   targetEl = event.target;
