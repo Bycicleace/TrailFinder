@@ -4,7 +4,7 @@ $(document).foundation()
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
 // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
-  initMap(lon,lat)
+  initMap()
 }
 
 
@@ -12,9 +12,9 @@ var firstAPICall =function(stateSearch){
 let map;
 
 
-function initMap(lon,lat) {
+function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: lat, lng: lon },
+    center: { lat: -34.397, lng: 150.644 },
     zoom: 8,
   });
 }
@@ -94,6 +94,7 @@ var displayParks = function() {
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div")
     parkCardCell.className = "cell"
+    parkCardCell.id = "state-cell"
     parkCard.className = "card";
     parkCardHeader.className = "card-divider";
     parkCardContent.className = "card-section";
@@ -109,6 +110,7 @@ var displayParks = function() {
 
 
 stateSelectionEl.addEventListener("click", function(event){
+
   targetEl = event.target;
   if (targetEl.matches(".state")){
     getParksByState(targetEl.textContent);
@@ -125,4 +127,11 @@ stateSelectionEl.addEventListener("click", function(event){
       }
     },500);
   };
+});
+
+
+document.addEventListener('click',function(e){
+  if(e.target.className== 'card-section' || e.target.className== 'card-divider'){
+    console.log("click")
+  }
 });
