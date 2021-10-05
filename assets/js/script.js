@@ -1,5 +1,66 @@
 $(document).foundation()
 
+var stateAbb = {
+  "AL": "Alabama",
+  "AK": "Alaska",
+  "AS": "American Samoa",
+  "AZ": "Arizona",
+  "AR": "Arkansas",
+  "CA": "California",
+  "CO": "Colorado",
+  "CT": "Connecticut",
+  "DE": "Delaware",
+  "DC": "District Of Columbia",
+  "FM": "Federated States Of Micronesia",
+  "FL": "Florida",
+  "GA": "Georgia",
+  "GU": "Guam",
+  "HI": "Hawaii",
+  "ID": "Idaho",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "IA": "Iowa",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "LA": "Louisiana",
+  "ME": "Maine",
+  "MH": "Marshall Islands",
+  "MD": "Maryland",
+  "MA": "Massachusetts",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MS": "Mississippi",
+  "MO": "Missouri",
+  "MT": "Montana",
+  "NE": "Nebraska",
+  "NV": "Nevada",
+  "NH": "New Hampshire",
+  "NJ": "New Jersey",
+  "NM": "New Mexico",
+  "NY": "New York",
+  "NC": "North Carolina",
+  "ND": "North Dakota",
+  "MP": "Northern Mariana Islands",
+  "OH": "Ohio",
+  "OK": "Oklahoma",
+  "OR": "Oregon",
+  "PW": "Palau",
+  "PA": "Pennsylvania",
+  "PR": "Puerto Rico",
+  "RI": "Rhode Island",
+  "SC": "South Carolina",
+  "SD": "South Dakota",
+  "TN": "Tennessee",
+  "TX": "Texas",
+  "UT": "Utah",
+  "VT": "Vermont",
+  "VI": "Virgin Islands",
+  "VA": "Virginia",
+  "WA": "Washington",
+  "WV": "West Virginia",
+  "WI": "Wisconsin",
+  "WY": "Wyoming"
+}
 
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
@@ -45,6 +106,8 @@ var npsAPIKey = "api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E"
 
 function getParksByState(state) {
   parksArray = [];
+  var currentStateEl = document.querySelector(".current-state");
+  currentStateEl.textContent = stateAbb[state]
   fetch(parksURL + "stateCode=" + state + "&" + npsAPIKey)
   .then(function(response) {
     return response.json();
@@ -93,13 +156,22 @@ function getParksByState(state) {
 var stateSelectionEl = document.querySelector(".search-box-container")
 var resultsEl = document.querySelector(".info-container")
 
+var formatPhoneNumber = function(phoneNumber){
+  formattedPhoneNumber = String(phoneNumber).match(/\d{3}(?=\d{2,3})|\d+/g).join("-")
+  return formattedPhoneNumber;
+}
+
 var displayParks = function() {
   resultsEl.innerHTML = ""
   parksArray.forEach(function(park) {
     var parkCardCell = document.createElement("div");
     var parkCard = document.createElement("div");
     var parkCardHeader = document.createElement("div");
-    var parkCardContent = document.createElement("div")
+    var parkCardContent = document.createElement("div");
+    var parkPhoneContainer = document.createElement("div");
+    var parkEmailContainer = document.createElement("div");
+    var parkPhone = document.createElement("a");
+    var parkEmail = document.createElement("a");
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
     parkCard.className = "card";
@@ -108,7 +180,17 @@ var displayParks = function() {
     parkCardHeader.className = "card-divider";
     parkCardContent.className = "card-section";
     parkCardHeader.textContent = park.fullName;
-    parkCardContent.textContent = park.description + " Phone Number: " + park.phoneNumbers + " Email Address: " + park.emailAddresses;
+    parkCardContent.textContent = park.description;
+    parkPhoneContainer.textContent = "Phone Number: "
+    parkEmailContainer.textContent = "Email Address: "
+    parkPhone.setAttribute("href","tel:" + park.phoneNumbers);
+    parkEmail.setAttribute("href", "mailto:" + parkEmail)
+    parkPhone.textContent = formatPhoneNumber(park.phoneNumbers);
+    parkEmail.textContent = park.emailAddresses;
+    parkPhoneContainer.appendChild(parkPhone);
+    parkEmailContainer.appendChild(parkEmail);
+    parkCardContent.appendChild(parkPhoneContainer);
+    parkCardContent.appendChild(parkEmailContainer);
     parkCard.appendChild(parkCardHeader);
     parkCard.appendChild(parkCardContent);
     parkCardCell.appendChild(parkCard);
