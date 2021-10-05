@@ -12,11 +12,18 @@ var firstAPICall =function(stateSearch){
 let map;
 
 
-function initMap() {
+function initMap(lat, lon) {
+  var mapCords = { lat: lat, lng: lon };
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    center: mapCords,
+    zoom: 12,
   });
+
+  new google.maps.Marker({
+    position: mapCords,
+    map,
+    title: "Hello",
+  })
 }
 
 
@@ -96,6 +103,8 @@ var displayParks = function() {
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
     parkCard.className = "card";
+    parkCardHeader.id = park.id;
+    parkCardContent.id = park.id;
     parkCardHeader.className = "card-divider";
     parkCardContent.className = "card-section";
     parkCardHeader.textContent = park.fullName;
@@ -132,6 +141,16 @@ stateSelectionEl.addEventListener("click", function(event){
 
 document.addEventListener('click',function(e){
   if(e.target.className== 'card-section' || e.target.className== 'card-divider'){
-    console.log("click")
+    for(var i = 0; i < parksArray.length; i++)
+    {
+      if(parksArray[i].id == e.target.id)
+      {
+        var parkLong = parseFloat(parksArray[i].longitude, 10);
+        var parkLat = parseFloat(parksArray[i].latitude, 10);
+
+        initMap(parkLat, parkLong);
+        console.log(parkLat, parkLong);
+      }
+    }
   }
 });
