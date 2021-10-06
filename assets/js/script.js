@@ -168,10 +168,6 @@ var displayParks = function() {
     var parkCard = document.createElement("div");
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div");
-    var parkPhoneContainer = document.createElement("div");
-    var parkEmailContainer = document.createElement("div");
-    var parkPhone = document.createElement("a");
-    var parkEmail = document.createElement("a");
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
     parkCard.className = "card";
@@ -181,16 +177,29 @@ var displayParks = function() {
     parkCardContent.className = "card-section";
     parkCardHeader.textContent = park.fullName;
     parkCardContent.textContent = park.description;
-    parkPhoneContainer.textContent = "Phone Number: "
-    parkEmailContainer.textContent = "Email Address: "
-    parkPhone.setAttribute("href","tel:" + park.phoneNumbers);
-    parkEmail.setAttribute("href", "mailto:" + parkEmail)
-    parkPhone.textContent = formatPhoneNumber(park.phoneNumbers);
-    parkEmail.textContent = park.emailAddresses;
-    parkPhoneContainer.appendChild(parkPhone);
-    parkEmailContainer.appendChild(parkEmail);
-    parkCardContent.appendChild(parkPhoneContainer);
-    parkCardContent.appendChild(parkEmailContainer);
+
+    // Only if there is a phone number, print
+    if (park.phoneNumbers.length > 0) {
+      var parkPhoneContainer = document.createElement("div");
+      var parkPhone = document.createElement("a");  
+      parkPhoneContainer.textContent = "Phone Number: "
+      parkPhone.setAttribute("href","tel:" + park.phoneNumbers[0]);
+      parkPhone.textContent = formatPhoneNumber(park.phoneNumbers[0]);
+      parkPhoneContainer.appendChild(parkPhone);
+      parkCardContent.appendChild(parkPhoneContainer);
+    }
+
+    // Only if there is an email address, print
+    if (park.emailAddresses.length > 0) {
+      var parkEmail = document.createElement("a");
+      var parkEmailContainer = document.createElement("div");
+      parkEmailContainer.textContent = "Email Address: "
+      parkEmail.setAttribute("href", "mailto:" + parkEmail)
+      parkEmail.textContent = park.emailAddresses;
+      parkEmailContainer.appendChild(parkEmail);
+      parkCardContent.appendChild(parkEmailContainer);
+    }
+
     parkCard.appendChild(parkCardHeader);
     parkCard.appendChild(parkCardContent);
     parkCardCell.appendChild(parkCard);
