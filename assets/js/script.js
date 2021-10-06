@@ -168,6 +168,7 @@ var displayParks = function() {
     var parkCard = document.createElement("div");
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div");
+    var favoriteButton = document.createElement("button");    
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
     parkCard.className = "card";
@@ -175,7 +176,7 @@ var displayParks = function() {
     parkCardContent.id = park.id;
     parkCardHeader.className = "card-divider";
     parkCardContent.className = "card-section";
-    parkCardHeader.textContent = park.fullName;
+    parkCardHeader.innerHTML = park.fullName;
     parkCardContent.textContent = park.description;
 
     // Only if there is a phone number, print
@@ -200,6 +201,9 @@ var displayParks = function() {
       parkCardContent.appendChild(parkEmailContainer);
     }
 
+    favoriteButton.setAttribute("type","button");
+    favoriteButton.textContent = "TEST BUTTON";
+    parkCardContent.appendChild(favoriteButton);
     parkCard.appendChild(parkCardHeader);
     parkCard.appendChild(parkCardContent);
     parkCardCell.appendChild(parkCard);
