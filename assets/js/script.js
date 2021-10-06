@@ -242,6 +242,7 @@ document.addEventListener('click',function(e){
       {
         var parkLong = parseFloat(parksArray[i].longitude, 10);
         var parkLat = parseFloat(parksArray[i].latitude, 10);
+        document.getElementsByClassName("card").style.height = "800px";
 
         initMap(parkLat, parkLong);
         console.log(parkLat, parkLong);
