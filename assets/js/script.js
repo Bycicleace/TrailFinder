@@ -185,7 +185,8 @@ var displayParks = function () {
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div");
     var favoriteButton = document.createElement("button");
-    favoriteButton.className = "favorite-button button";
+    favoriteButton.classList.add("favorite-button");
+    favoriteButton.classList.add("button");
     favoriteButton.id = park.id
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
@@ -274,7 +275,8 @@ document.addEventListener('click', function (e) {
 
 var favoriteParks = []
 document.addEventListener('click',function(event){
-  if (event.target.className == "favorite-button"){
+  console.log("clicked");
+  if (event.target.classList.contains("favorite-button")){
     console.log("hello")
     for (var i = 0; i < parksArray.length; i++) {
   
