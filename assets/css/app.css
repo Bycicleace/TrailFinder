@@ -25,8 +25,8 @@ html, body {
 /* font-family: 'Montserrat', sans-serif; */
 body {
     background-image: url('../img/background.jpg');
-    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -53,9 +53,7 @@ body {
 background-color:rgba(0, 0, 0, 0)
 }
 
-.button {
-    width: 100%;
-}
+
 
 /* States list menu */
 ul .menu {
@@ -127,4 +125,20 @@ h1 {
     font-size: 32px;
     background-color:rgba(0, 0, 0, 0);
     font-style: italic;
+}
+
+@media screen and (max-width: 39.9375em) {
+
+    .top-bar {
+        -webkit-text-stroke: 1px #f7f9fb;
+    }
+
+    .google-map {
+        max-height: 400px;
+    }
+
+    .grid-container {
+        max-height: 400px;
+    }
+
 }
