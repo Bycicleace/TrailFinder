@@ -67,9 +67,9 @@ var stateAbb = {
 }
 
 // Use Imput to call first API
-var firstAPICall = function (stateSearch) {
-  // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
-  initMap()
+var firstAPICall =function(stateSearch){
+// fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
+
 }
 
 
@@ -79,10 +79,17 @@ let map;
 
 function initMap(lat, lon) {
   var mapCords = { lat: lat, lng: lon };
-  map = new google.maps.Map(document.getElementById("map"), {
+  var mapOptions = {
+    backgroundColor: 'hsla(0, 0%, 0%, 0)',
     center: mapCords,
     zoom: 12,
-  });
+  };
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+
+  var mapOptions = {
+    backgroundColor: 'hsla(0, 0%, 0%, 0)'
+  };
 
   new google.maps.Marker({
     position: mapCords,

@@ -5,10 +5,41 @@
     dark blue: #303c6c
     lighter blue: #b4dfe5
     lightest blue: #d2fdff
+
+    close to nature::
+    dark green : #687864
+    dark blue : #31708e 
+    blue : #5085a5
+    lighter blue: #8fc1e2
+    eggshell : #f7f9fb
 */
 
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
 
 
+
+/* font-family: 'Montserrat', sans-serif; */
+body {
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.near-you {
+    font-size: 24px;
+}
+
+
+.title-bar {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    opacity: .7;
+}
 
 .grid-container {
     max-height: 800px;
@@ -18,37 +49,82 @@
 
 .google-map {
     width: 100%;
-    height: 400px;
+    height: 800px;
+background-color:rgba(0, 0, 0, 0)
 }
 
 .button {
     width: 100%;
 }
 
+/* States list menu */
 ul .menu {
     max-height: 300px;
     overflow: scroll;
+    overflow-x: hidden;
 }
+/* menu */
 
-
+/* Drop Down menu setting */
 li a {
-    color: #f4976c;
+    color: #f7f9fb;
 
 }
 
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
-    border-color: #f4976c transparent transparent;
+    border-color: #f7f9fb transparent transparent;
 }
 
 .dropdown.menu > li.is-active > a {
     color:#303c6c;
+    
+}
+
+.js-dropdown-active {
+    background-color: #5085a5;
 }
 
 h1 {
-    color: #f4976c;
+    color: #f7f9fb;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    text-shadow: 2px 2px #31708e;
+
+}
+/* END */
+
+.title-bar {
+    background-color: #31708e;
+}
+
+.card-divider {
+    background-color: #5085a5;
+    color: #f7f9fb;
+}
+
+.card-section {
+    background-color: #8fc1e2;
+    color:#f7f9fb;
 }
 
 
-.title-bar {
+.map-bar {
     background-color: #303c6c;
+    font-weight: 600;
+    font-size: 32px;
+    opacity: .8;
+}
+
+.arrow {
+    font-size: 32px;
+    font-weight: 600;
+    color: black;
+}
+
+.top-bar {
+    font-weight: 600;
+    font-size: 32px;
+    background-color:rgba(0, 0, 0, 0);
+    font-style: italic;
 }

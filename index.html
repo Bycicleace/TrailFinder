@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,100;1,600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="assets/css/foundation.css">
     <link rel="stylesheet" href="assets/css/app.css"></link>
-    <title>TrailFinder</title>
+    <title>ParkFinder</title>
 </head>
 <body>
     <main> 
     <div class="title-bar">
         <div class="title-bar-title">
-            <h1>TrailFinder</h1>
+            <h1>ParkFinder</h1>
         </div>
         <div class="title-bar-right">
-            <h1>Find hiking trails near you!</h1>
+            <h1 class="near-you">Find parks near you!</h1>
         </div>
     </div>
     
@@ -23,9 +26,14 @@
         <ul class="dropdown menu" data-dropdown-menu>
             <li>
                 <li>
-                    <a class="arrow">Select A State</a>
-                    <div class="current-state"></div>
+                   <div class="grid-padding-x"> 
+                        <div class="cell large-6 ">
+                            <a class="arrow">Select A State</a>
+                        </div>
+                    </div>
+
                     <ul class="menu">
+                        <li class = "state"><a href="#" class="state">Favorites</a></li>
                         <li class = "state"><a href="#" class="state">AL</a></li>
                         <li class = "state"><a href="#" class="state">AK</a></li>
                         <li class = "state"><a href="#" class="state">AS</a></li>
@@ -92,21 +100,20 @@
     </div>
 <div class="grid-x grid-padding-x">
     <div class="cell large-6 search-results">
+        <div class="current-state top-bar"></div>
         <div class="grid-container">
             <div class="grid-x grid-margin-x state-results">
                 <div class="info-container"></div>
             </div>
         </div>
     </div>
-    <div class="cell large-6">
+    <div class="cell large-6 map">
+        <div class="top-bar map-bar">Park Map</div>
         <div class="google-map" id="map">
         </div>    
     </div>
 
-    
-    <div class="grid-x grid-padding-x">
 
-    </div>
 </div>
 
 
