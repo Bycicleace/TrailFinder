@@ -5,6 +5,7 @@ $(document).foundation()
 
 
 var stateAbb = {
+  "Favorites": "Favorites",
   "AL": "Alabama",
   "AK": "Alaska",
   "AS": "American Samoa",
@@ -115,10 +116,14 @@ var baseURL = "https://developer.nps.gov/api/v1/"
 var parksURL = baseURL + "parks?"
 var npsAPIKey = "api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E"
 
-function getParksByState(state) {
-  parksArray = [];
+function updateStateEl(state) {
   var currentStateEl = document.querySelector(".current-state");
   currentStateEl.textContent = stateAbb[state]
+}
+
+function getParksByState(state) {
+  parksArray = [];
+  updateStateEl(state);
   fetch(parksURL + "stateCode=" + state + "&" + npsAPIKey)
     .then(function (response) {
       return response.json();
@@ -230,7 +235,13 @@ stateSelectionEl.addEventListener("click", function (event) {
 
   targetEl = event.target;
   if (targetEl.matches(".state")) {
-    getParksByState(targetEl.textContent);
+    if (targetEl.textContent == "Favorites") {
+      updateStateEl("Favorites");
+      parksArray = favoriteParks;
+      console.log(parksArray);
+    } else {
+      getParksByState(targetEl.textContent);
+    }
     i = 0
     var apiCallLoad = setInterval(function () {
       if (i > 20) {
@@ -276,8 +287,8 @@ document.addEventListener('click',function(event){
           description: parksArray[i].description,  // Park Description
           latitude: parksArray[i].latitude,        // Park Latitude Coordinate
           longitude: parksArray[i].longitude,      // Park Longitude Coordinate
-          phoneNumbers: parksArray[i].phoneNumber,          // Park Phone Number array
-          emailAddresses: parksArray[i].emailAddress       // Park Email Address array
+          phoneNumbers: parksArray[i].phoneNumbers,          // Park Phone Number array
+          emailAddresses: parksArray[i].emailAddresses      // Park Email Address array
         }
           console.log(favoritesNew);
           favoriteParks.push(favoritesNew);
@@ -289,7 +300,11 @@ document.addEventListener('click',function(event){
   }
 })
 
-// favoriteParks = localStorage.getItem("favorites");
-// if (favoriteParks === null) {
-//   favoriteParks = []
-// }
+function LoadFavorites() {
+  favoriteParks = JSON.parse(localStorage.getItem("favorites"));
+  if (favoriteParks === null) {
+    favoriteParks = []
+  }
+}
+
+LoadFavorites();
