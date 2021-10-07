@@ -1,4 +1,8 @@
+var parksArray = null;
+
 $(document).foundation()
+
+
 
 var stateAbb = {
   "AL": "Alabama",
@@ -63,8 +67,8 @@ var stateAbb = {
 }
 
 // Use Imput to call first API
-var firstAPICall =function(stateSearch){
-// fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
+var firstAPICall = function (stateSearch) {
+  // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
   initMap()
 }
 
@@ -109,46 +113,46 @@ function getParksByState(state) {
   var currentStateEl = document.querySelector(".current-state");
   currentStateEl.textContent = stateAbb[state]
   fetch(parksURL + "stateCode=" + state + "&" + npsAPIKey)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    for (var i = 0; i < data.data.length; i++) {
-      // Empty arrays for phone and emails.
-      newPhoneNumbers = [];
-      newEmailAddresses = [];
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (var i = 0; i < data.data.length; i++) {
+        // Empty arrays for phone and emails.
+        newPhoneNumbers = [];
+        newEmailAddresses = [];
 
-      // Gather phone Numbers (Voice only)
-      for (var j = 0; j < data.data[i].contacts.phoneNumbers.length; j++) {
-        if (data.data[i].contacts.phoneNumbers[j].type === "Voice") {
-          newPhoneNumbers.push(data.data[i].contacts.phoneNumbers[j].phoneNumber);
+        // Gather phone Numbers (Voice only)
+        for (var j = 0; j < data.data[i].contacts.phoneNumbers.length; j++) {
+          if (data.data[i].contacts.phoneNumbers[j].type === "Voice") {
+            newPhoneNumbers.push(data.data[i].contacts.phoneNumbers[j].phoneNumber);
+          }
         }
+
+        // Gather email addresses
+        for (var j = 0; j < data.data[i].contacts.emailAddresses.length; j++) {
+          newEmailAddresses.push(data.data[i].contacts.emailAddresses[j].emailAddress);
+        }
+
+        // Build simplified object.
+        var currentPark = {
+          id: data.data[i].id,                    // Park ID
+          url: data.data[i].url,                  // Park URL Landing Page
+          fullName: data.data[i].fullName,        // Park Name
+          description: data.data[i].description,  // Park Description
+          latitude: data.data[i].latitude,        // Park Latitude Coordinate
+          longitude: data.data[i].longitude,      // Park Longitude Coordinate
+          phoneNumbers: newPhoneNumbers,          // Park Phone Number array
+          emailAddresses: newEmailAddresses       // Park Email Address array
+        };
+
+        // Push to parks array.
+        parksArray.push(currentPark);
       }
-
-      // Gather email addresses
-      for (var j = 0; j < data.data[i].contacts.emailAddresses.length; j++) {
-        newEmailAddresses.push(data.data[i].contacts.emailAddresses[j].emailAddress);
-      }
-
-      // Build simplified object.
-      var currentPark = {
-        id: data.data[i].id,                    // Park ID
-        url: data.data[i].url,                  // Park URL Landing Page
-        fullName: data.data[i].fullName,        // Park Name
-        description: data.data[i].description,  // Park Description
-        latitude: data.data[i].latitude,        // Park Latitude Coordinate
-        longitude: data.data[i].longitude,      // Park Longitude Coordinate
-        phoneNumbers: newPhoneNumbers,          // Park Phone Number array
-        emailAddresses: newEmailAddresses       // Park Email Address array
-      };
-
-      // Push to parks array.
-      parksArray.push(currentPark);
-    }
-  })
-  .catch(function(error) {
-    console.log("There was an error: " + error);
-  })
+    })
+    .catch(function (error) {
+      console.log("There was an error: " + error);
+    })
 
   return parksArray;
 }
@@ -156,19 +160,21 @@ function getParksByState(state) {
 var stateSelectionEl = document.querySelector(".search-box-container")
 var resultsEl = document.querySelector(".info-container")
 
-var formatPhoneNumber = function(phoneNumber){
+var formatPhoneNumber = function (phoneNumber) {
   formattedPhoneNumber = String(phoneNumber).match(/\d{3}(?=\d{2,3})|\d+/g).join("-")
   return formattedPhoneNumber;
 }
 
-var displayParks = function() {
+var displayParks = function () {
   resultsEl.innerHTML = ""
-  parksArray.forEach(function(park) {
+  parksArray.forEach(function (park) {
     var parkCardCell = document.createElement("div");
     var parkCard = document.createElement("div");
     var parkCardHeader = document.createElement("div");
     var parkCardContent = document.createElement("div");
-    var favoriteButton = document.createElement("button");    
+    var favoriteButton = document.createElement("button");
+    favoriteButton.className = "favorite-button";
+    favoriteButton.id = park.id
     parkCardCell.className = "cell"
     parkCardCell.id = "state-cell"
     parkCard.className = "card";
@@ -182,9 +188,9 @@ var displayParks = function() {
     // Only if there is a phone number, print
     if (park.phoneNumbers.length > 0) {
       var parkPhoneContainer = document.createElement("div");
-      var parkPhone = document.createElement("a");  
+      var parkPhone = document.createElement("a");
       parkPhoneContainer.textContent = "Phone Number: "
-      parkPhone.setAttribute("href","tel:" + park.phoneNumbers[0]);
+      parkPhone.setAttribute("href", "tel:" + park.phoneNumbers[0]);
       parkPhone.textContent = formatPhoneNumber(park.phoneNumbers[0]);
       parkPhoneContainer.appendChild(parkPhone);
       parkCardContent.appendChild(parkPhoneContainer);
@@ -201,8 +207,8 @@ var displayParks = function() {
       parkCardContent.appendChild(parkEmailContainer);
     }
 
-    favoriteButton.setAttribute("type","button");
-    favoriteButton.textContent = "TEST BUTTON";
+    favoriteButton.setAttribute("type", "button");
+    favoriteButton.textContent = "Add to Favorites";
     parkCardContent.appendChild(favoriteButton);
     parkCard.appendChild(parkCardHeader);
     parkCard.appendChild(parkCardContent);
@@ -213,33 +219,31 @@ var displayParks = function() {
 
 
 
-stateSelectionEl.addEventListener("click", function(event){
+stateSelectionEl.addEventListener("click", function (event) {
 
   targetEl = event.target;
-  if (targetEl.matches(".state")){
+  if (targetEl.matches(".state")) {
     getParksByState(targetEl.textContent);
-    i=0
-    var apiCallLoad = setInterval (function(){
-      if (i>20){
+    i = 0
+    var apiCallLoad = setInterval(function () {
+      if (i > 20) {
         alert("The request timed out")
         clearInterval(apiCallLoad);
-      }else if (parksArray.length === 0) {
-        i = i+1
-      }else{
+      } else if (parksArray.length === 0) {
+        i = i + 1
+      } else {
         displayParks();
         clearInterval(apiCallLoad);
       }
-    },500);
+    }, 500);
   };
 });
 
 
-document.addEventListener('click',function(e){
-  if(e.target.className== 'card-section' || e.target.className== 'card-divider'){
-    for(var i = 0; i < parksArray.length; i++)
-    {
-      if(parksArray[i].id == e.target.id)
-      {
+document.addEventListener('click', function (e) {
+  if (e.target.className == 'card-section' || e.target.className == 'card-divider') {
+    for (var i = 0; i < parksArray.length; i++) {
+      if (parksArray[i].id == e.target.id) {
         var parkLong = parseFloat(parksArray[i].longitude, 10);
         var parkLat = parseFloat(parksArray[i].latitude, 10);
 
@@ -249,3 +253,36 @@ document.addEventListener('click',function(e){
     }
   }
 });
+
+var favoriteParks = []
+document.addEventListener('click',function(event){
+  if (event.target.className == "favorite-button"){
+    console.log("hello")
+    for (var i = 0; i < parksArray.length; i++) {
+  
+      if (parksArray[i].id == event.target.id) {
+        // Favorites List for display
+        var favoritesNew = {
+          id: parksArray[i].id,                    // Park ID
+          url: parksArray[i].url,                  // Park URL Landing Page
+          fullName: parksArray[i].fullName,        // Park Name
+          description: parksArray[i].description,  // Park Description
+          latitude: parksArray[i].latitude,        // Park Latitude Coordinate
+          longitude: parksArray[i].longitude,      // Park Longitude Coordinate
+          phoneNumbers: parksArray[i].phoneNumber,          // Park Phone Number array
+          emailAddresses: parksArray[i].emailAddress       // Park Email Address array
+        }
+          console.log(favoritesNew);
+          favoriteParks.push(favoritesNew);
+          console.log(favoriteParks);
+          localStorage.setItem("favorites",JSON.stringify(favoriteParks));
+        }
+
+    }
+  }
+})
+
+// favoriteParks = localStorage.getItem("favorites");
+// if (favoriteParks === null) {
+//   favoriteParks = []
+// }
