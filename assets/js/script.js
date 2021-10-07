@@ -65,7 +65,7 @@ var stateAbb = {
 // Use Imput to call first API
 var firstAPICall =function(stateSearch){
 // fetch(https://developer.nps.gov/api/v1/parks?api_key=CV0ig8nWQLFF65A4f4FNghhUov7ovwklkr4ybJ6E)
-  initMap()
+
 }
 
 
@@ -75,10 +75,17 @@ let map;
 
 function initMap(lat, lon) {
   var mapCords = { lat: lat, lng: lon };
-  map = new google.maps.Map(document.getElementById("map"), {
+  var mapOptions = {
+    backgroundColor: 'hsla(0, 0%, 0%, 0)',
     center: mapCords,
     zoom: 12,
-  });
+  };
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+
+  var mapOptions = {
+    backgroundColor: 'hsla(0, 0%, 0%, 0)'
+  };
 
   new google.maps.Marker({
     position: mapCords,
@@ -233,16 +240,17 @@ stateSelectionEl.addEventListener("click", function(event){
   };
 });
 
-
 document.addEventListener('click',function(e){
   if(e.target.className== 'card-section' || e.target.className== 'card-divider'){
     for(var i = 0; i < parksArray.length; i++)
     {
       if(parksArray[i].id == e.target.id)
       {
+
+        
+        
         var parkLong = parseFloat(parksArray[i].longitude, 10);
         var parkLat = parseFloat(parksArray[i].latitude, 10);
-        document.getElementsByClassName("card").style.height = "800px";
 
         initMap(parkLat, parkLong);
         console.log(parkLat, parkLong);
@@ -250,3 +258,4 @@ document.addEventListener('click',function(e){
     }
   }
 });
+

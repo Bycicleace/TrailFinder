@@ -17,6 +17,7 @@
 html, body {
     margin: 0;
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -49,7 +50,7 @@ body {
 .google-map {
     width: 100%;
     height: 800px;
-    opacity: 0;
+background-color:rgba(0, 0, 0, 0)
 }
 
 .button {
@@ -108,8 +109,22 @@ h1 {
 }
 
 
+.map-bar {
+    background-color: #303c6c;
+    font-weight: 600;
+    font-size: 32px;
+    opacity: .8;
+}
 
-  #map {
-      opacity: 1;
-  }
+.arrow {
+    font-size: 32px;
+    font-weight: 600;
+    color: black;
+}
 
+.top-bar {
+    font-weight: 600;
+    font-size: 32px;
+    background-color:rgba(0, 0, 0, 0);
+    font-style: italic;
+}
