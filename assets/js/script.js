@@ -214,7 +214,7 @@ var displayParks = function () {
       var parkEmail = document.createElement("a");
       var parkEmailContainer = document.createElement("div");
       parkEmailContainer.textContent = "Email Address: "
-      parkEmail.setAttribute("href", "mailto:" + parkEmail)
+      parkEmail.setAttribute("href", "mailto:" + park.emailAddresses)
       parkEmail.textContent = park.emailAddresses;
       parkEmailContainer.appendChild(parkEmail);
       parkCardContent.appendChild(parkEmailContainer);
