@@ -4,7 +4,7 @@
 The end product is a web application that will search and display a list of national parks that are pinned on a map. On selection of the park, you are presented with information on the trail and its location.
 
 ## Project Status
-This project is currently being coded. 
+This project has been completed 
 
 ## Contributions
 
